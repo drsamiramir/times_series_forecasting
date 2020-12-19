@@ -1,7 +1,7 @@
 import numpy as np
 
-# split a univariate sequence into samples
 def split_sequence(sequence, n_steps):
+    """split a univariate sequence into samples"""
     X, y = list(), list()
     for i in range(len(sequence)):
         # find the end of this pattern
@@ -15,14 +15,3 @@ def split_sequence(sequence, n_steps):
         y.append(seq_y)
     return np.array(X), np.array(y)
 
-
-# define input sequence
-raw_seq = [10, 20, 30, 40, 50, 60, 70, 80, 90]
-# choose a number of time steps
-n_steps = 3
-# split into samples
-X, y = split_sequence(raw_seq, n_steps)
-print(X.shape)
-# summarize the data
-for i in range(len(X)):
-    print(X[i], y[i])
