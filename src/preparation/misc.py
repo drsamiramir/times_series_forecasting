@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def split_sequence(sequence, n_steps):
     """split a univariate sequence into samples"""
     X, y = list(), list()
@@ -14,4 +15,3 @@ def split_sequence(sequence, n_steps):
         X.append(seq_x)
         y.append(seq_y)
     return np.array(X), np.array(y)
-
