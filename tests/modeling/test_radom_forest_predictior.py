@@ -6,25 +6,8 @@ from sklearn.metrics import mean_absolute_error
 from sklearn.ensemble import RandomForestRegressor
 from matplotlib import pyplot
 from src.processing.misc_data_loader import *
+from src.preparation.misc import *
 
-
-# transform a time series dataset into a supervised learning dataset
-def series_to_supervised(data, n_in=1, n_out=1, dropnan=True):
-    n_vars = 1 if type(data) is list else data.shape[1]
-    df = DataFrame(data)
-    cols = list()
-    # input sequence (t-n, ... t-1)
-    for i in range(n_in, 0, -1):
-        cols.append(df.shift(i))
-    # forecast sequence (t, t+1, ... t+n)
-    for i in range(0, n_out):
-        cols.append(df.shift(-i))
-    # put it all together
-    agg = concat(cols, axis=1)
-    # drop rows with NaN values
-    if dropnan:
-        agg.dropna(inplace=True)
-    return agg.values
 
 
 # split a univariate dataset into train/test sets
