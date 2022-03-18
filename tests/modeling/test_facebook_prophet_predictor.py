@@ -7,6 +7,7 @@ from sklearn.metrics import mean_absolute_error
 from matplotlib import pyplot
 from pathlib import Path
 
+
 # load data
 ROOT_DIR = Path(__file__).parent.parent.parent
 df = read_csv(str(ROOT_DIR)+'/data/monthly-car-sales.csv', header=0)
